@@ -21,11 +21,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
-        - name: change workdir
+      - name: change workdir
         run: cd $HOME/work/campingliste/campingliste
-
-        - name: Run converter
+      - name: Run converter
         run: ./convert.sh
       #- name: misc md2asciidoc
       #  uses: docker://pandoc/latex:2.6 #misc.md --to=asciidoc -o mis.asciidoc
