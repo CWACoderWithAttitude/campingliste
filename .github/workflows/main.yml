@@ -25,6 +25,19 @@ jobs:
         run: cd $HOME/work/campingliste/campingliste
       - name: Run converter
         run: ./convert.sh
+    # https://github.com/marketplace/actions/github-release-create-update-and-upload-assets#advanced-example
+      - name: Set enviroment for github-release
+        run: |
+          echo ::set-env name=RELEASE_TAG::"v1.0.0"
+          echo ::set-env name=RELEASE_NAME::"$GITHUB_WORKFLOW"
+      - uses: meeDamian/github-release@2.0
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            tag: ${{ env.RELEASE_TAG }}
+            name: ${{ env.RELEASE_NAME }}
+            files: >
+              lebensmittel.pdf
+              misc.pdf
       #- name: misc md2asciidoc
       #  uses: docker://pandoc/latex:2.6 #misc.md --to=asciidoc -o mis.asciidoc
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
