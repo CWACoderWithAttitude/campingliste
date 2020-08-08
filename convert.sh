@@ -3,6 +3,7 @@
 input="
 misc.md
 lebensmittel.md
+kuechenkiste.md
 "
 
 
